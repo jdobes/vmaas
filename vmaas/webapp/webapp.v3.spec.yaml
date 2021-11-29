@@ -54,6 +54,7 @@ paths:
     post:
       description: List all updates for list of package NEVRAs
       operationId: vmaas.webapp.app.UpdatesHandlerV3Post.post
+      deprecated: true
       requestBody:
         description: Input json
         content:
@@ -73,6 +74,7 @@ paths:
     get:
       description: List all updates for single package NEVRA
       operationId: vmaas.webapp.app.UpdatesHandlerV3Get.get
+      deprecated: true
       parameters:
         - name: nevra
           description: Package NEVRA
@@ -306,6 +308,7 @@ paths:
     post:
       description: List of applicable CVEs to a package list.
       operationId: vmaas.webapp.app.VulnerabilitiesHandlerPost.post
+      deprecated: true
       requestBody:
         content:
           application/json:
@@ -324,6 +327,7 @@ paths:
     get:
       description: List of applicable CVEs for a single package NEVRA
       operationId: vmaas.webapp.app.VulnerabilitiesHandlerGet.get
+      deprecated: true
       parameters:
         - name: nevra
           description: Package NEVRA
@@ -344,6 +348,7 @@ paths:
     post:
       description: List of applicable errata to a package list.
       operationId: vmaas.webapp.app.PatchesHandlerPost.post
+      deprecated: true
       requestBody:
         content:
           application/json:
@@ -362,6 +367,7 @@ paths:
     get:
       description: List of applicable CVEs for a single package NEVRA
       operationId: vmaas.webapp.app.PatchesHandlerGet.get
+      deprecated: true
       parameters:
         - name: nevra
           description: Package NEVRA
