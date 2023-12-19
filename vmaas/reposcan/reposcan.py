@@ -881,11 +881,10 @@ class SyncTask:
     @classmethod
     def cancel(cls):
         """Terminate the process pool."""
-        with disabled_signals():
-            cls.workers.terminate()
-            cls.workers.join()
-            cls.workers = Pool(1)
-            cls.finish()
+        cls.workers.terminate()
+        cls.workers.join()
+        cls.workers = Pool(1)
+        cls.finish()
 
 
 def periodic_sync():
@@ -893,19 +892,6 @@ def periodic_sync():
 
     LOGGER.info("Periodic sync started.")
     PeriodicSync.start_task()
-
-
-@contextmanager
-def disabled_signals():
-    """ Temporarily disables signal handlers, using contextlib to automatically re-enable them"""
-    handlers = {}
-    for sig in KILL_SIGNALS:
-        handlers[sig] = signal.signal(sig, signal.SIG_DFL)
-    try:
-        yield True
-    finally:
-        for sig in KILL_SIGNALS:
-            signal.signal(sig, handlers[sig])
 
 
 def create_app(specs):
